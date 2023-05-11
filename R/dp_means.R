@@ -27,7 +27,7 @@ dp_means <- function(x, lambda, max_iter = 100, tol = 1e-3, verbose = TRUE) {
   ss_total <- numeric(max_iter)
   for (iteration in 1:max_iter) {
     current_assignments <- processInstances(mu, x, lambda)
-    k <- max(current_assignments)
+    k <- max(current_assignments) - 1
     # Compute new cluster means:
     clusters <- lapply(split(df, current_assignments), as.matrix)
     mu <- do.call(rbind, lapply(clusters, colMeans))
